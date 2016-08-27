@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quoter</title>
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <!-- STRIPE -->
+</head>
+<body>
+
+<h1>Pay Per Rank Quoter</h1>
+<form>
+  <input id="url" type="text" name="website" placeholder="Enter You Website"/>
+  <br/>
+  <br/>
+  <textarea id="keywords" rows=4 cols="18" name="keywords" placeholder="Keywords you want to rank for, one line at a time" ></textarea>
+</form>
+
+<p id="test">Receive your free quote now!</p>
+
+<h1>SEO Audit Report</h1>
+
+<div width="33">
+  <h2 id="organicKeywords">Organic Keywords: </h2>
+</div>
+<div width="33">
+  <h2 id="organicTraffic">Organic Traffic: </h2>
+</div>
+<div width="33">
+  <h2 id="organicTrafficCost">Organic Traffic Cost: </h2>
+</div>
+
+<h1>SEO Price Quote</h1>
+<table id="quoteTable">
+  <tr>
+    <th>Keyword</th>
+    <th>Search Volume</th>
+    <th>Expected Traffic</th>
+    <th>CPC</th>
+    <th>21+</th>
+    <th>20 - 11</th>
+    <th>10 - 7</th>
+    <th>6 - 4</th>
+    <th>3 - 1</th>
+    <th>Current Ranking</th>
+  </tr>
+</table>
+
+<form id="paymentForm" action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_q8ty7xU2IBngKZG8C3z7JlOp"
+    data-amount=""
+    data-name="SERP Solution"
+    data-description="6 Month SEO Package"
+    data-image="/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true"
+    data-panel-label="Buy NOY!">
+  </script>
+</form>
+
+  <script>
+  var serverResponse;
+  // Helper Functions
+  var pingServer = function (url, keywords) {
+    // Ping API
+    $.getJSON( "https://mystache.herokuapp.com/api/test?url=" + url + "&keywords=" + keywords, function( data ) {
+      // Log Server Response
+      var organicKeywords = data.domainReport["0"]["Organic Keywords"];
+      var organicTraffic = data.domainReport["0"]["Organic Traffic"];
+      var organicTrafficCost = data.domainReport["0"]["Organic Cost"];
+
+      // Geberate Report
+      document.getElementById("organicKeywords").innerHTML = 'Organic Keywords: ' + organicKeywords.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      document.getElementById("organicTraffic").innerHTML = 'Organic Traffic: ' + organicTraffic.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      document.getElementById("organicTrafficCost").innerHTML = 'Organic Traffic Cost: $' + organicTrafficCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      // Generate Quote
+      data.keywordQuote.forEach(function(keyword) {
+        $('#quoteTable tr:last').after('<tr><td>' +
+        keyword.keyword + '</td><td>' +
+        keyword.searchVolume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td>' +
+        keyword.expectedTraffic.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td>$' +
+        keyword.costPerClick + '</td><td>' +
+        keyword.teir5Price + '</td><td>$' +
+        keyword.teir4Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td>$' +
+        keyword.teir3Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td>$' +
+        keyword.teir2Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td>$' +
+        keyword.teir1Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td>' +
+        + keyword.currentPosition + '</td></tr>');
+      });
+      // Set Form Action with Session ID
+      document.getElementById('paymentForm').action = "https://mystache.herokuapp.com/api/process?sessionID=" + data.sessionID;
+
+      serverResponse = data;
+    });
+    return serverResponse;
+  };
+  // AUDIT/QUOTE SUBMIT
+  $('#test').click(function () {
+    var url = $('#url').val();
+    var keywords = $('#keywords').val().split(/\n/);
+    if(keywords.length < 6) {
+      pingServer(url, keywords);
+    } else {
+      alert('5 Keywords Only');
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<div id="content" class="site-content" role="main">
+<form id="firstForm">
+  <h1 style="display: block; margin: auto; text-align:center;">Performance Based SEO Service</h1>
+  <br/>
+  <h3 style="display: block; margin: auto; text-align:center;">No set-up fees. No long-term contracts. Review upfront pricing in 60 seconds.</h3>
+  <br/>
+  <input id="url" type="text" name="website" placeholder="Enter You Website" style="width: 100%; max-width: 500px; display: block; margin: auto;"/>
+  <br/>
+  <textarea id="keywords" rows=4 cols="18" name="keywords" placeholder="Keywords you want to rank for, one line at a time" style="width: 100%; max-width: 500px; display: block; margin: auto;"></textarea>
+</form>
+<br/>
+<button class="dslc-active" style="display: block; margin: auto; text-align:center;" id="test">Receive your free quote now!</button>
+<svg id="loader" style="display:none; margin:auto;" width="180px" height="180px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><g transform="rotate(0 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
+  </circle>
+</g><g transform="rotate(90 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#999;#000"></animate>
+  </circle>
+</g><g transform="rotate(180 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#000;#fff"></animate>
+  </circle>
+</g><g transform="rotate(270 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
+  </circle>
+</g></svg>
+<br/>
+<div id="mainDiv" style="display:none;">
+<h1 id="auditTitle" style="width: 100%; text-align:center; margin:auto; display:none;">SEO Audit Report for URL</h1>
+<br/>
+<div class="container" display:none;>
+  <div class="col-md-4" style="text-align:center;">
+    <h2 id="organicKeywords">Organic Keywords: </h2>
+  </div>
+  <div class="col-md-4" style="text-align:center;">
+    <h2 id="organicTraffic">Organic Traffic: </h2>
+  </div>
+  <div class="col-md-4" style="text-align:center;">
+    <h2 id="organicTrafficCost">Organic Traffic Cost: </h2>
+  </div>
+</div>
+<div class="container">
+<h1 style="width: 100%; text-align:center; margin:auto;">SEO Price Quote</h1>
+  <br/>
+  <table id="quoteTable" class="table">
+    <tr>
+      <th style="text-align:center;">Keyword</th>
+      <th style="text-align:center;">Search Volume</th>
+      <th style="text-align:center;">Expected Traffic</th>
+      <th style="text-align:center;">CPC</th>
+      <th style="text-align:center;">21+</th>
+      <th style="text-align:center;">20 - 11</th>
+      <th style="text-align:center;">10 - 7</th>
+      <th style="text-align:center;">6 - 4</th>
+      <th style="text-align:center;">3 - 1</th>
+      <th style="text-align:center;">Current Ranking</th>
+    </tr>
+  </table>
+</div>
+<div class="container">
+  <form id="paymentForm" action="" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_q8ty7xU2IBngKZG8C3z7JlOp"
+      data-amount=""
+      data-name="SERP Solution"
+      data-description="6 Month SEO Package"
+      data-image="https://pbs.twimg.com/profile_images/713767813064822784/waBdnxT9_400x400.jpg"
+      data-locale="auto"
+      data-zip-code="true"
+      data-panel-label="Buy Now!">
+    </script>
+  </form>
+</div>
+</div>
+  <script>
+  var serverResponse;
+  // Helper Functions
+  var pingServer = function (url, keywords) {
+    // Ping API
+    $.getJSON( "https://serpquotertwo.herokuapp.com/api/test?url=" + url + "&keywords=" + keywords, function( data ) {
+      // Log Server Response
+      var organicKeywords = data.domainReport["0"]["Organic Keywords"];
+      var organicTraffic = data.domainReport["0"]["Organic Traffic"];
+      var organicTrafficCost = data.domainReport["0"]["Organic Cost"];
+
+      // Geberate Report
+      document.getElementById("organicKeywords").innerHTML = 'Organic Keywords: ' + organicKeywords.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      document.getElementById("organicTraffic").innerHTML = 'Organic Traffic: ' + organicTraffic.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      document.getElementById("organicTrafficCost").innerHTML = 'Organic Traffic Cost: $' + organicTrafficCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      document.getElementById("auditTitle").innerHTML = "SEO Audit for " + url;
+      // Generate Quote
+      data.keywordQuote.forEach(function(keyword) {
+        $('#quoteTable tr:last').after('<tr><td  style="text-align:center;">' +
+        keyword.keyword + '</td><td>' +
+        keyword.searchVolume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td  style="text-align:center;">' +
+        keyword.expectedTraffic.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td  style="text-align:center;">$' +
+        keyword.costPerClick + '</td><td  style="text-align:center;">' +
+        keyword.teir5Price + '</td><td  style="text-align:center;">$' +
+        keyword.teir4Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td  style="text-align:center;">$' +
+        keyword.teir3Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td  style="text-align:center;">$' +
+        keyword.teir2Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td  style="text-align:center;">$' +
+        keyword.teir1Price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</td><td  style="text-align:center;">' +
+        + keyword.currentPosition + '</td></tr>');
+      });
+      // Set Form Action with Session ID
+      document.getElementById('paymentForm').action = "https://serpquotertwo.herokuapp.com/api/process?sessionID=" + data.sessionID;
+
+      serverResponse = data;
+      var element = $('#mainDiv');
+      var element2 = $('#loader');
+
+      element.css("display", "block");
+      element2.css("display", "none");
+    });
+
+    return serverResponse;
+  };
+  // AUDIT/QUOTE SUBMIT
+  $('#test').click(function () {
+    var url = $('#url').val();
+    var keywords = $('#keywords').val().split(/\n/);
+
+    if(url == '') {
+      alert('You must enter a URL');
+    }
+
+    if(keywords.length == 0) {
+      alert('Please Enter Atleast 1 Keyword');
+    }
+    if(keywords.length < 6) {
+      pingServer(url, keywords);
+
+      var element1 = $('#test');
+      var element2 = $('#loader');
+      var element3 = $('#firstForm');
+
+      element1.css("display", "none");
+      element2.css("display", "block");
+      element3.css("display", "none");
+    } else {
+      alert('5 Keywords Only');
+    }
+  });
+</script>

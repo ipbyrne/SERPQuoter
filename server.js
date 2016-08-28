@@ -177,7 +177,7 @@ app.post('/api/process?', function(req, res) {
     metadata: {'quoteID' : sessionID}
   }).then(function(customer) {
     return stripe.charges.create({
-      amount: 100, // Amount in cents
+      amount: 000, // Amount in cents
       currency: "usd",
       customer: customer.id
     });

@@ -5,9 +5,15 @@
   <!-- JQUERY -->
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <!-- STRIPE -->
+  <!-- Latest compiled and minified CSS -->
+  <style>
+
+  </style>
 </head>
 <body>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <h1>Pay Per Rank Quoter</h1>
 <form>
   <input id="url" type="text" name="website" placeholder="Enter You Website"/>
@@ -16,7 +22,28 @@
   <textarea id="keywords" rows=4 cols="18" name="keywords" placeholder="Keywords you want to rank for, one line at a time" ></textarea>
 </form>
 
-<p id="test">Receive your free quote now!</p>
+<p id="test" style="display:block;">Receive your free quote now!</p>
+<svg style="display:none; margin:auto;" id="loader" width="180px" height="180px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><g transform="rotate(0 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
+  </circle>
+</g><g transform="rotate(90 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#999;#000"></animate>
+  </circle>
+</g><g transform="rotate(180 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#000;#fff"></animate>
+  </circle>
+</g><g transform="rotate(270 50 50)">
+  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
+  </circle>
+</g></svg>
 
 <h1>SEO Audit Report</h1>
 
@@ -56,7 +83,7 @@
     data-image="/img/documentation/checkout/marketplace.png"
     data-locale="auto"
     data-zip-code="true"
-    data-panel-label="Buy NOY!">
+    data-panel-label="Buy Now!">
   </script>
 </form>
 
@@ -65,7 +92,7 @@
   // Helper Functions
   var pingServer = function (url, keywords) {
     // Ping API
-    $.getJSON( "https://mystache.herokuapp.com/api/test?url=" + url + "&keywords=" + keywords, function( data ) {
+    $.getJSON( "https://serpquotertwo.herokuapp.com/api/test?url=" + url + "&keywords=" + keywords, function( data ) {
       // Log Server Response
       var organicKeywords = data.domainReport["0"]["Organic Keywords"];
       var organicTraffic = data.domainReport["0"]["Organic Traffic"];
@@ -91,9 +118,15 @@
         + keyword.currentPosition + '</td></tr>');
       });
       // Set Form Action with Session ID
-      document.getElementById('paymentForm').action = "https://mystache.herokuapp.com/api/process?sessionID=" + data.sessionID;
+      document.getElementById('paymentForm').action = "https://serpquotertwo.herokuapp.com/api/process?sessionID=" + data.sessionID;
 
       serverResponse = data;
+
+      var element = document.getElementById('mainDiv');
+      var element2 = document.getElementById('loader');
+
+      element.style.display = null;
+      element2.style.display = none;
     });
     return serverResponse;
   };
@@ -103,6 +136,11 @@
     var keywords = $('#keywords').val().split(/\n/);
     if(keywords.length < 6) {
       pingServer(url, keywords);
+      var element = document.getElementById('test');
+      var element2 = document.getElementById('loader');
+
+      element.style.display = null;
+      element2.style.display = block;
     } else {
       alert('5 Keywords Only');
     }

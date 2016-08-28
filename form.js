@@ -54,7 +54,7 @@ $('#test').click(function () {
   if(keywords.length == 0) {
     alert('Please Enter Atleast 1 Keyword');
   }
-  if(keywords.length < 6) {
+  if(keywords.length < 11) {
     pingServer(url, keywords);
 
     var element1 = $('#test');

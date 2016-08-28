@@ -1,91 +1,91 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 <div id="content" class="site-content" role="main">
-<form id="firstForm">
-  <input id="url" type="text" name="website" placeholder="Enter You Website" style="width: 100%; max-width: 500px; display: block; margin: auto;"/>
-  <br/>
-  <textarea id="keywords" rows=4 cols="18" name="keywords" placeholder="Keywords you want to rank for, one line at a time" style="width: 100%; max-width: 500px; display: block; margin: auto;"></textarea>
-</form>
-<br/>
-<button class="dslc-active" style="display: block; margin: auto; text-align:center;" id="test">Receive your free quote now!</button>
-<svg id="loader" style="display:none; margin:auto;" width="180px" height="180px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><g transform="rotate(0 50 50)">
-  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
-    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
-  </circle>
-</g><g transform="rotate(90 50 50)">
-  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
-    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#999;#000"></animate>
-  </circle>
-</g><g transform="rotate(180 50 50)">
-  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
-    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#000;#fff"></animate>
-  </circle>
-</g><g transform="rotate(270 50 50)">
-  <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
-    <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
-  </circle>
-</g></svg>
-<br/>
-<div id="mainDiv" style="display:none;">
-<h1 id="auditTitle" style="width: 100%; text-align:center; margin:auto; display:none;">SEO Audit Report for URL</h1>
-<br/>
-<div class="container" style="display:none;">
-  <div class="col-md-4" style="text-align:center;">
-    <h2 id="organicKeywords">Organic Keywords: </h2>
-  </div>
-  <div class="col-md-4" style="text-align:center;">
-    <h2 id="organicTraffic">Organic Traffic: </h2>
-  </div>
-  <div class="col-md-4" style="text-align:center;">
-    <h2 id="organicTrafficCost">Organic Traffic Cost: </h2>
-  </div>
-</div>
-<div class="container">
-<h1 style="width: 100%; text-align:center; margin:auto;">SEO Price Quote</h1>
-  <br/>
-  <table id="quoteTable" class="table" style="width:100%; max-width: 1000px; display:block; margin:auto;">
-    <tr>
-      <th style="text-align:center; width:10%;">Keyword</th>
-      <th style="text-align:center; width:10%;">Search Volume</th>
-      <th style="text-align:center; width:10%;">Expected Traffic</th>
-      <th style="text-align:center; width:10%;">CPC</th>
-      <th style="text-align:center; width:10%;">21+</th>
-      <th style="text-align:center; width:10%;">20 - 11</th>
-      <th style="text-align:center; width:10%;">10 - 7</th>
-      <th style="text-align:center; width:10%;">6 - 4</th>
-      <th style="text-align:center; width:10%;">3 - 1</th>
-      <th style="text-align:center; width:10%;">Current Ranking</th>
-    </tr>
-  </table>
-</div>
-<br/>
-<div style="width: 100%; text-align:center; margin:auto;">
-    <h2>Risk Free 7-Day Cancellation Guarantee</h2>
-    <p style="width: 100%; max-width:400px; display:block; margin:auto;">If at any point during the approval process you decide to cancel the activation of the program, we will honor your request at no cost. Customers are only charged after rankings have increased.</p>
-</div>
-<br/>
-<div class="container" style="display:block; width: 100%; max-width:300px; margin:auto; text-align:center;">
-  <form id="paymentForm" action="" method="POST">
-    <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="pk_test_q8ty7xU2IBngKZG8C3z7JlOp"
-      data-amount=""
-      data-name="SERP Solution"
-      data-description="6 Month SEO Package"
-      data-image="https://pbs.twimg.com/profile_images/713767813064822784/waBdnxT9_400x400.jpg"
-      data-locale="auto"
-      data-zip-code="true"
-      data-panel-label="Launch Your Campaign!"
-      data-label="Sign Up For FREE">
-    </script>
+  <form id="firstForm">
+    <input id="url" type="text" name="website" placeholder="Enter You Website" style="width: 100%; max-width: 500px; display: block; margin: auto;"/>
+    <br/>
+    <textarea id="keywords" rows=4 cols="18" name="keywords" placeholder="Keywords you want to rank for, one line at a time" style="width: 100%; max-width: 500px; display: block; margin: auto;"></textarea>
   </form>
+  <br/>
+  <button class="new-button" style="display: block; margin: auto; text-align:center;" id="test">Receive your free quote now!</button>
+  <svg id="loader" style="display:none; margin:auto;" width="180px" height="180px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><g transform="rotate(0 50 50)">
+    <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+      <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+      <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
+    </circle>
+  </g><g transform="rotate(90 50 50)">
+    <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+      <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+      <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#999;#000"></animate>
+    </circle>
+  </g><g transform="rotate(180 50 50)">
+    <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+      <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+      <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#000;#fff"></animate>
+    </circle>
+  </g><g transform="rotate(270 50 50)">
+    <circle r="5" cx="30" cy="50" transform="translate(14 -14)">
+      <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"></animateTransform>
+      <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fff;#999"></animate>
+    </circle>
+  </g></svg>
+  <br/>
+  <div id="mainDiv" style="display:none;">
+  <h1 id="auditTitle" style="width: 100%; text-align:center; margin:auto; display:none;">SEO Audit Report for URL</h1>
+  <br/>
+  <div class="container" style="display:none;">
+    <div class="col-md-4" style="text-align:center;">
+      <h2 id="organicKeywords">Organic Keywords: </h2>
+    </div>
+    <div class="col-md-4" style="text-align:center;">
+      <h2 id="organicTraffic">Organic Traffic: </h2>
+    </div>
+    <div class="col-md-4" style="text-align:center;">
+      <h2 id="organicTrafficCost">Organic Traffic Cost: </h2>
+    </div>
+  </div>
+  <div class="container" style="margin-top:-75px;">
+  <h1 style="width: 100%; text-align:center; margin:auto;">SEO Price Quote</h1>
+    <br/>
+    <table id="quoteTable" class="table" style="width:100%; max-width: 1000px; display:block; margin:auto;">
+      <tr>
+        <th style="text-align:center; width:10%;">Keyword</th>
+        <th style="text-align:center; width:10%;">Search Volume</th>
+        <th style="text-align:center; width:10%;">Expected Traffic</th>
+        <th style="text-align:center; width:10%;">CPC</th>
+        <th style="text-align:center; width:10%;">21+</th>
+        <th style="text-align:center; width:10%;">20 - 11</th>
+        <th style="text-align:center; width:10%;">10 - 7</th>
+        <th style="text-align:center; width:10%;">6 - 4</th>
+        <th style="text-align:center; width:10%;">3 - 1</th>
+        <th style="text-align:center; width:10%;">Current Ranking</th>
+      </tr>
+    </table>
+  </div>
+  <br/>
+  <div style="width: 100%; text-align:center; margin:auto;">
+      <h2>Risk Free 7-Day Cancellation Guarantee</h2>
+      <p style="width: 100%; max-width:400px; display:block; margin:auto;">If at any point during the approval process you decide to cancel the activation of the program, we will honor your request at no cost. Customers are only charged after rankings have increased.</p>
+  </div>
+  <br/>
+  <div class="container" style="display:block; width: 100%; max-width:300px; margin:auto; text-align:center;">
+    <form id="paymentForm" action="" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_q8ty7xU2IBngKZG8C3z7JlOp"
+        data-amount=""
+        data-name="SERP Solution"
+        data-description="6 Month SEO Package"
+        data-image="https://pbs.twimg.com/profile_images/713767813064822784/waBdnxT9_400x400.jpg"
+        data-locale="auto"
+        data-zip-code="true"
+        data-panel-label="Launch Your Campaign!"
+        data-label="Sign Up For FREE">
+      </script>
+    </form>
+  </div>
+  <br/>
+  <div style="width: 100%; text-align:center; margin:auto;">
+      <p style="display:block; margin:auto;">By signing up you automatically agree with SERP Solution's <a target="_blank" href="http://serpsolution.com/terms-of-service/">Terms of Service</a>.</p>
+  </div>
 </div>
-<br/>
-<div style="width: 100%; text-align:center; margin:auto;">
-    <p style="display:block; margin:auto;">By signing up you automatically agree with SERP Solution's <a target="_blank" href="http://serpsolution.com/terms-of-service/">Terms of Service</a>.</p>
-</div>
-</div>
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="https://cdn.rawgit.com/ipbyrne/SERPQuoter/master/form.js" ></script>

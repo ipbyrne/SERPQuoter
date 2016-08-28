@@ -11,7 +11,7 @@ var SEMRushAPI = require('node-semrush');
 var semrush = new SEMRushAPI('e8eb2a6267f029ba9eacab90df4f6878');
 
 // STRIPE PAYMENT
-var stripe = require('stripe')('sk_test_EiIApoM38WkUtgzBlAjIv8tw');
+var stripe = require('stripe')('sk_live_hMMcLGx9oVHMsFcz4huFYLjf');
 
 var port = process.env.PORT || 8080;
 
